@@ -43,6 +43,7 @@ function init() {
   console.log('Please answer the following questions:')
   inquirer.prompt(questions).then((answers) => {
     // pass in responses from user to the correct role file
+    // array ? [Employee, Engineer, Manager, Intern]
     const response = new Employee (answers);
     // renderLicenseBadge
     console.log(typeof response);
