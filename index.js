@@ -1,9 +1,9 @@
 const fs = require('fs');
 const inquirer = require('inquirer');
-const employee = require('./lib/Employee');
-const engineer = require('./lib/Engineer');
-const manager = require('./lib/Manager');
-const intern = require('./lib/Intern');
+const Employee = require('./lib/Employee');
+const Engineer = require('./lib/Engineer');
+const Manager = require('./lib/Manager');
+const Intern = require('./lib/Intern');
 
 // add input questiions here 
 const questions = [
@@ -43,11 +43,11 @@ function init() {
   console.log('Please answer the following questions:')
   inquirer.prompt(questions).then((answers) => {
     // pass in responses from user to the correct role file
-    const response = lib (answers);
+    const response = new Employee (answers);
     // renderLicenseBadge
-    console.log(answers);
+    console.log(typeof response);
     //make output folder "./output/README.md"
-    writeToFile('../dist/index.html')
+    writeToFile('./dist/index.html', JSON.stringify(response));
   });
 }
 
