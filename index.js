@@ -12,12 +12,12 @@ inquirer
     },
     {
       type: 'input',
-      name: 'name',
-      message: 'What is your title within the company?'
+      name: 'role',
+      message: 'What is your role within the company?'
     },
     {
       type: 'list',
-      name: 'name',
+      name: 'contact',
       message: 'How can you best be reached?',
       choices: ['email', 'phone', 'linkedin', 'other']
 
@@ -35,8 +35,27 @@ inquirer
     }
   });
 
-// create function to write to file 
+// TODO: Create a function to write README file
+function writeToFile(fileName, data) {
+  fs.writeFile(fileName, data, (err) => {
+    if (err) {
+      throw err;
+    } 
+    console.log('Team profile was created!!');
+  });
+}
 
-// create function to initialize app 
+// TODO: Create a function to initialize app
+function init() {
+  console.log('Please answer the following questions:')
+  inquirer.prompt(questions).then((answers) => {
+    const response = generateMarkdown(answers);
+    // renderLicenseBadge
+    console.log(answers);
+    //make output folder "./output/README.md"
+    writeToFile('../dist/index.html')
+  });
+}
 
-// init
+// Function call to initialize app
+init();
