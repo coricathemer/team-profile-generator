@@ -1,9 +1,12 @@
 const fs = require('fs');
 const inquirer = require('inquirer');
+const employee = require('./lib/Employee');
+const engineer = require('./lib/Engineer');
+const manager = require('./lib/Manager');
+const intern = require('./lib/Intern');
 
 // add input questiions here 
-inquirer
-  .prompt([
+const questions = [
     /* Pass your questions in here */
     {
       type: 'input',
@@ -23,17 +26,7 @@ inquirer
 
     },
     
-  ])
-  .then(answers => {
-    // Use user feedback for... whatever!!
-  })
-  .catch(error => {
-    if(error.isTtyError) {
-      // Prompt couldn't be rendered in the current environment
-    } else {
-      // Something else when wrong
-    }
-  });
+  ]
 
 // TODO: Create a function to write README file
 function writeToFile(fileName, data) {
@@ -49,7 +42,8 @@ function writeToFile(fileName, data) {
 function init() {
   console.log('Please answer the following questions:')
   inquirer.prompt(questions).then((answers) => {
-    const response = generateMarkdown(answers);
+    // pass in responses from user to the correct role file
+    const response = lib (answers);
     // renderLicenseBadge
     console.log(answers);
     //make output folder "./output/README.md"
