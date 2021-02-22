@@ -91,7 +91,7 @@ const managerPrompt = () => {
   return inquirer.prompt(manager)
   .then(ManagerAnswers => {
     const team = [];
-    team.push( new Manager(`${ManagerAnswers.employeeName}`, `${ManagerAnswers.id}`, `${ManagerAnswers.email}`, `${ManagerAnswers.officeNumber}` ));
+    team.push( new Manager(`${ManagerAnswers.managerName}`, `${ManagerAnswers.id}`, `${ManagerAnswers.email}`, `${ManagerAnswers.officeNumber}` ));
     return team;
   })
 }
